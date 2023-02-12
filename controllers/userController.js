@@ -6,4 +6,9 @@ module.exports = {
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
   },
+  postUser(req, res) {
+    User.create(req.body)
+      .then((dbUserData) => res.json(dbUserData))
+      .catch((err) => res.status(500).json(err));
+  },
 };
