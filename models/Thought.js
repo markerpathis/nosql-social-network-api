@@ -1,13 +1,25 @@
 const { Schema, model } = require("mongoose");
 const reactionSchema = require("./Reaction");
 
-const thoughtSchema = new Schema({
-  thoughtText: { type: String, required: true, minlength: 1, maxlength: 280 },
-  //  TODO: Use a getter method to format the timestamp on query
-  createdAt: { type: Date, default: Date.now },
-  username: { type: String, required: true },
-  // Array of nested documents created with the `reactionSchema`
-  reactions: [reactionSchema],
+const thoughtSchema = new Schema(
+  {
+    thoughtText: { type: String, required: true, minlength: 1, maxlength: 280 },
+    //  TODO: Use a getter method to format the timestamp on query
+    createdAt: { type: Date, default: Date.now },
+    username: { type: String, required: true },
+    // Array of nested documents created with the `reactionSchema`
+    reactions: [reactionSchema],
+  },
+  {
+    toJSON: {
+      virtuals: true,
+    },
+    id: false,
+  }
+);
+
+thoughtSchema.virtual("reactionCount").get(function () {
+  return this.reactions.length;
 });
 
 const Thought = model("thought", thoughtSchema);
