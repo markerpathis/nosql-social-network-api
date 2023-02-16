@@ -57,6 +57,9 @@ Below is a link to the repository on GitHub:
 
 Below is a walkthrough video:
 
+https://user-images.githubusercontent.com/111654725/219257165-3fabc88b-bf81-4530-ae17-eb070ef6d96d.mp4
+
+
 ## License
 
 This project is licensed under the terms of the MIT License. The license badge at the top of this README includes a link to the description of the license.
